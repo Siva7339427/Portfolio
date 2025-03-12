@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>My Personal Portfolio Website</title>
+        <link rel="stylesheet" href="style.css">
+
+    </head>
+    <body>
+        <div id="header">
+            <div class="container">
+                <nav>
+                    <ul>
+                        <li><a href="#header">Home</a></li>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                        <!-- <i class="fas fa-times"></i> -->
+                    </ul>
+                    <!-- <i class="fas fa-bars"></i> -->
+                </nav>
+                <div class="header-text">
+                    <p>Java Fullstack Developer</p>
+                    <h1>Hi, I'm <span>Siva</span><br>from Kumbakonam</h1>
+                </div>
+
+            </div>
+        </div>
+ <!--------------------about-------------------------->
+        <div id="about">
+            <div class="container">
+                <div class="row">
+                    <div class="abt-col-1">
+                        <img src="images/1719848250875.jpg">
+                    </div>
+                    <div class="abt-col-2">
+                        <h1 class="subtitle">About me</h1>
+                        <p style="color: black;">Dynamic and detail-oriented software developer with expertise in core Java ,Object oriented programming concepts concept,Datastructure and algorithms,MySql,Javascript,HTML,CSS.Quick learner with a passion for problem solving and a commitment to deliver high quality code.Eagar to contribute to innovative projects an passion for coding to a dynamic team.</p>
+                        <div class="tab-titles">
+                            <div class="tab-links active-link" onclick="opentab('skills')">Skills</div>
+                            <div class="tab-links" onclick="opentab('education')">Education</div>
+                            <div class="tab-links" onclick="opentab('project')">Project</div>
+                        </div>
+                        <div class="tab-content active-tab" id="skills">
+                            <ul>
+                                <li><span>Frontend Development</span><br><br>HTML</li>
+                                <li>CSS</li>
+                                <li>Javascript</li>
+                                <li>React js</li>
+                                <br>
+                                <li><span>Backend Development</span><br><br>Java</li>
+                                <br>
+                                <li><span>Database</span><br><br>MySql</li>
+                            </ul>
+                        </div>
+                        <div class="tab-content" id="education">
+                            <ul>
+                                <li><span>University college of engineering,BIT campus</span><br><br>Automobile Engineering-7.4 CGPA</li>
+                                <br>
+                                <li><span>Banadurai.Hr.Sec.School</span><br><br>Higher Secondary Education-72%</li>
+                                <br>
+                                <li><span>Banadurai.Hr.Sec.School</span><br><br>Secondary Education-91%</li>
+                            </ul>
+                        </div>
+                        <div class="tab-content" id="project">
+                            <ul>
+                                <li><span>Movies Review Webpage</span><br><br>developed a simple Movie Review Webpage using HTML,CSS,Javascript</li>
+                                <li>Implemented user-friendly features for browsing and reviewing movies</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+<!------------------------contact----------------------------->
+<!-- Add Font Awesome -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+<div id="contact">
+    <div class="container">
+        <div class="row">
+            <div class="contact-left">
+                <h1 class="sub-title">Contact me</h1>
+                <p><i class="fa-solid fa-paper-plane"></i>cocsiva2002@gmail.com</p>
+                <p><i class="fa-solid fa-phone"></i>7339427006</p>
+                <div class="social-icon">
+                    <a href=""><i class="fa-brands fa-facebook"></i></a>
+                    <a href="https://www.instagram.com/karupu_thamizhan?igsh=bzU3NGplNWpodXow"><i class="fa-brands fa-instagram"></i> </a>
+                    <a href="https://www.linkedin.com/in/siva-v-aa8847285?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"><i class="fa-brands fa-linkedin"></i></a>
+                </div>
+                <a href="" download class="btn btn2">Download CV</a>
+            </div>
+            <div class="contact-right">
+                <form name="submit-to-google-sheet">
+                    <input type="text" name="name" placeholder="your name" required>
+                    <input type="email" name="email" placeholder="your email" required>
+                    <textarea name="message" rows="6" placeholder="your message"></textarea>
+                    <button type="submit" class="btn btn3">Submit</button>
+                </form>
+                <span id="msg"></span>
+            </div>
+        </div>
+        <div class="copyrights">
+            <p>Copyrights @ siva Made with <i class="fas fa-heart"></i> by easy tutorial</p>
+        </div>
+    </div>
+</div>
+
+
+        <script>
+
+            var tablinks=document.getElementsByClassName("tab-links");
+            var tabcontents=document.getElementsByClassName("tab-content");
+
+            function opentab(tabname){
+
+                for(tablink of tablinks){
+                    tablink.classList.remove("active-link");
+                }
+                for(tabcontent of tabcontents){
+                    tabcontent.classList.remove("active-tab");
+                }
+                event.currentTarget.classList.add("active-link");
+                document.getElementById(tabname).classList.add("active-tab");
+
+            }
+
+        </script>
+        <script>
+            const scriptURL = 'https://script.google.com/macros/s/AKfycbx54UWwx21tsP_jx0jwRqznUIMY7Vz5L0Jel-aoPbc7eFo_2OE0XfTj1EqplW0oEih9bg/exec'
+            const form = document.forms['submit-to-google-sheet']
+            const msg=document.getElementById("msg")
+          
+            form.addEventListener('submit', e => {
+              e.preventDefault()
+              fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+                .then(response => {
+                    msg.innerHTML="message sent successfully"
+                    setTimeout(function(){
+                        msg.innerHTML=""
+                    },5000)
+                    form.reset()
+                })
+                .catch(error => console.error('Error!', error.message))
+            })
+          </script>
+
+    </body>
+</html>
